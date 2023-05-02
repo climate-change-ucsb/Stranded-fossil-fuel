@@ -1,2 +1,3 @@
 cytemp.csv is generated from the data and code from Burke et al.https://github.com/wmadavis/BDD2018
-baseline.csv is generate from https://github.com/country-level-scc/cscc-paper-2018.
+
+baseline.csv is generate from https://github.com/country-level-scc/cscc-paper-2018, popweightcountry_1980_2010_obsbaseline.csv.
