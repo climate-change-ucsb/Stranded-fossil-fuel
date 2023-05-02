@@ -1,9 +1,4 @@
-# Compute country-level social cost of carbon
-#
-# Any questions: laurent.drouet@eiee.org
-# Launch Rscript ./generate_cscc.R to see usage
-# Check the Rmd file for an example of use
-# Outputs are expressed in USD 2005
+
 
 library(data.table)
 library(docopt)
