@@ -1,3 +1,5 @@
+#We generate the benefits of climate change mitigation under RCP6.0 and SSP2. The code is originally revised from Ricke et al. 2018.
+
 library(data.table)
 library(docopt)
 
