@@ -1,10 +1,11 @@
+#We generate the benefits across all RCPs and SSPs at the country level, the time horizon is from 2020-2050. The horizon can be changed to 2030
 library(data.table)
 library(docopt)
 library(openxlsx)
 
 rcpgroup=c("rcp45","rcp60","rcp85")
 sspgroup=c("SSP1","SSP2","SSP3","SSP4","SSP5")
-
+time_horizon=2051
 
 for (rcpV in rcpgroup){
   for (sspV in sspgroup){
@@ -315,7 +316,7 @@ for (nid in runid) {
       dscc = res_scc[,list(ISO3,model_id,year,gdprate_cc_avg,scc)]
       dscc[,dfac := (1/(1 + .prtp/100 + .eta * gdprate_cc_avg)^(year - impulse_year))]
       dscc[,dscc := dfac * scc]
-      dscc_50=dscc[year<2051,]
+      dscc_50=dscc[year<time_horizon,] # change the time horizon here
       cscc_50 = rbind(cscc_50,dscc_50[,.(prtp = .prtp,eta = .eta,scc = sum(dscc)),
                              by = c("ISO3","model_id")],fill = T)
       cscc = rbind(cscc,dscc[,.(prtp = .prtp,eta = .eta,scc = sum(dscc)),
@@ -332,7 +333,7 @@ for (nid in runid) {
     dscc = res_scc[,list(ISO3,model_id,year,scc)]
     dscc[,dfac := (1/(1 + .dr/100)^(year - impulse_year))]
     dscc[,dscc := dfac * scc]
-    dscc_50=dscc[year<2051,]
+    dscc_50=dscc[year<time_horizon,]
     #dscc[,dr:=.dr] #add by me
     #dscc1=rbind(dscc1,dscc) #add by me
     cscc0 = rbind(cscc0,dscc[,.(dr = .dr,scc = sum(dscc)),
