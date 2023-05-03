@@ -1,4 +1,4 @@
-
+#We calculat the annual benefits by income group for Figure 4
 
 library(data.table)
 library(docopt)
